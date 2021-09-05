@@ -57,7 +57,7 @@ class TestCredential(unittest.TestCase):
         found_credential = Credential.find_email("jayhamo22@gmail.com")
         self.assertEqual(found_credential.first_name, test_credential.first_name)
 
-        
+
 
     def test_credentials_exists(self):
         '''
@@ -67,5 +67,15 @@ class TestCredential(unittest.TestCase):
         test_credential = Credential("Jamal", "Hassan", "", "sicario2793", "jayhamo22@gmail.com")
         test_credential.save_credential()
         credentials_exists = Credential.credential_exit("jayhamo22@gmail.com")
-        self.assertTrue(credentials_exists)    
+        self.assertTrue(credentials_exists)  
+
+
+    def test_display_all_credentials(self):
+        '''
+        method that returns a list of all credentials saved
+        '''
+        self.assertEqual(Credential.display_credential(),Credential.credential_list)
+
+if __name__ == '__main__':
+    unittest.main()       
  
