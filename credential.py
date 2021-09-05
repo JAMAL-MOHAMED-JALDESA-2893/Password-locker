@@ -34,3 +34,13 @@ class Credential:
             if credential.email == email:
                 return credential    
     
+    @classmethod
+    def credential_exit(cls, email):
+        '''
+       this Method checks if credential exit from credential_list
+        '''
+        for credential in cls.credential_list:
+            if credential.email == email:
+               return True
+
+        return False
