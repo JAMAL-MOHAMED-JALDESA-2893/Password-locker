@@ -24,4 +24,13 @@ class Credential:
         this method deletes credentials saved in the credential_list
         '''
         Credential.credential_list.remove(self)
+
+    @classmethod
+    def find_email(cls, email):
+        '''
+        this method takes an email and return an email that matches the credential
+        '''
+        for credential in cls.credential_list:
+            if credential.email == email:
+                return credential    
     
