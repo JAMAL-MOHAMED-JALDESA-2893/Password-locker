@@ -10,9 +10,15 @@ class User:
         self.password = password
         self.email = email
 
-     def save_user(self):
+    def save_user(self):
         '''
         save_user method save user object and appends it user_list
         '''
         User.user_list.append(self)
    
+    @classmethod
+    def display_users(cls):
+        '''
+        display_users is a class method that returns the class list
+        '''
+        return cls.user_list
