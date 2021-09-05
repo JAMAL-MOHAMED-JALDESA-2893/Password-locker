@@ -22,3 +22,10 @@ class User:
         display_users is a class method that returns the class list
         '''
         return cls.user_list
+
+    @classmethod
+    def display_credential(cls):
+        '''
+        this method that retuns the list of credential_list
+        '''
+        return cls.credential_list    
