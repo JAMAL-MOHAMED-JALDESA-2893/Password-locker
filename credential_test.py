@@ -19,11 +19,13 @@ class TestCredential(unittest.TestCase):
         self.assertEqual(self.new_credential.password, "sicario2793")
         self.assertEqual(self.new_credential.email, "jayhamo22@gmail.com")
 
+
     def tearDown(self):
         '''
         tearDown method that does clean up after each test case has run.
         '''
         Credential.credential_list = []
+
 
     def test_save_credential(self):
         '''
@@ -31,6 +33,7 @@ class TestCredential(unittest.TestCase):
         '''
         self.new_credential.save_credential() 
         self.assertEqual(len(Credential.credential_list), 1)
+
      
     def test_delete_credential(self):
         '''
@@ -42,4 +45,27 @@ class TestCredential(unittest.TestCase):
 
         self.new_credential.delete_credential()
         self.assertEqual(len(Credential.credential_list), 1)
+
+
+    def test_find_credentials_by_email(self):
+        '''
+        test to check if we can find a credentials by email and display information
+        '''
+        self.new_credential.save_credential()
+        test_credential = Credential("Jamal", "Hassan", "Jamal", "sicario2793", "jayhamo22@gmail.com")
+        test_credential.save_credential()
+        found_credential = Credential.find_email("jayhamo22@gmail.com")
+        self.assertEqual(found_credential.first_name, test_credential.first_name)
+
+        
+
+    def test_credentials_exists(self):
+        '''
+        test to check if we can return a Boolean if we cannot find the credentials
+        '''
+        self.new_credential.save_credential()
+        test_credential = Credential("Jamal", "Hassan", "", "sicario2793", "jayhamo22@gmail.com")
+        test_credential.save_credential()
+        credentials_exists = Credential.credential_exit("jayhamo22@gmail.com")
+        self.assertTrue(credentials_exists)    
  
